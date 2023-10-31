@@ -37,8 +37,8 @@ jobs:
         IMAGE_TAG: latest
       run: |
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r9h7w4o2
-          docker build -t deployment .
-          docker tag deployment:latest public.ecr.aws/r9h7w4o2/deployment:latest
+          docker pull healxci/cloud_engineer_test
+          docker tag cloud_engineer_test:latest public.ecr.aws/r9h7w4o2/deployment:latest
           docker push public.ecr.aws/r9h7w4o2/deployment:latest
           
     - name: Update kube config
