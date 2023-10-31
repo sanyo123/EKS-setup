@@ -42,7 +42,7 @@ jobs:
           docker push public.ecr.aws/r9h7w4o2/deployment:latest
           
     - name: Update kube config
-      run: aws eks update-kubeconfig --name demo --region eu-west-2
+      run: aws eks update-kubeconfig --name demo --region us-west-2
 
     - name: Deploy image to Amazon EKS
       run: |
