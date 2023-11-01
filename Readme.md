@@ -2,41 +2,20 @@ Prerequisites
 Before you start, ensure you have the following prerequisites in place:
 
 Amazon Web Services (AWS) account with the necessary permissions.
-Docker installed on your local machine for building and pushing Docker images.
-kubectl installed for interacting with your EKS cluster.
-Terraform installed for managing your infrastructure.
-GitHub account for setting up GitHub Actions.
+Create a public or private repository on your aws account.
 
-Step 1: Push Docker Image to ECR
+We have 2 branches on the Repo, one is dev branch for building terraform infrastructure, and main branch for pushing our containerized image to eks cluster.
+Ensure you update your repo name on the github action workflow file and set the neccessary AWS secret on your local github repository.
+I have used S3 bucket and dynamoDB for remote backend and state locking.
 
-1. Build and tag your Docker image:
-    docker build -t my-image:latest .
 
-2. Authenticate to ECR using the AWS CLI:
-    aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-id>.dkr.ecr.<your-region>.amazonaws.com
+Step 1: Deploy Infrastructure with Terraform
 
-3. Push the Docker image to ECR:
-    docker tag my-image:latest <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/my-repo:latest
-    docker push <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/my-repo:latest
+Go to the dev branch and click on the dev.yml worlflow in the .github/workflows folder and run the workload to deploy the eks cluster
 
-Step 2: Deploy Infrastructure with Terraform
+Step 2. Navigate to the main branch and run the main.yml github action workflow to deploy the containerized app on our eks clusters.
 
-1. Clone this repository to your local machine:
-    git@github.com:sanyo123/EKS-setup.git
-
-2. Navigate to the Terraform directory:
-    cd EKS-setup
-
-3. Initialize Terraform and apply the configuration:
-    terraform init
-    terraform apply
-
-4. Provide the required input values as prompted by Terraform.
-
-   the backend will be stored on aws S3 bucket.
-
-Running the pipeline 
-
+Instructions to run GitHub action automation workflow
 1. Go to your GitHub repository's main page.
 
 2. Click on the "Actions" tab in the top menu.
