@@ -17,10 +17,10 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket         = "your-terraform-state-bucket"
+    bucket         = "sanyo123bucketss"
     key            = "terraform.tfstate"
     region         = "us-west-2"
     encrypt        = true  
-    dynamodb_table = "your-lock-table"  
+    dynamodb_table = "sanyo123tables"  
   }
 }
