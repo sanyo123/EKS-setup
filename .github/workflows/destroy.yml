@@ -29,7 +29,7 @@ jobs:
 
     - name: Destroy Infrastructure
       run: |
-       terraform plan -destroy -out=tfplan
+       terraform plan -destroy -lock=false -out=tfplan
        terraform apply -destroy -auto-approve tfplan
       working-directory: ./
 
