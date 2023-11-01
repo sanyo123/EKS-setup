@@ -28,5 +28,9 @@ jobs:
       working-directory: ./
 
     - name: Destroy Infrastructure
-      run: terraform destroy -auto-approve 
+      run: |
+       terraform plan -destroy -out=tfplan
+       terraform apply -destroy -auto-approve tfplan
       working-directory: ./
+
+
