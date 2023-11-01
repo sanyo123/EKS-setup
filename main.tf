@@ -19,7 +19,7 @@ terraform {
   backend "s3" {
     bucket         = "sanyo123bucketss"
     key            = "terraform.tfstate"
-    region         = "us-east-1"
+    region         = "us-west-2"
     encrypt        = true  
     dynamodb_table = "sanyo123tables"  
   }
